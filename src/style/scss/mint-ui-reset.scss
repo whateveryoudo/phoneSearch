@@ -1,1 +1,11 @@
 //scss文件
+.mint-button{
+  font-size:14px;
+  height:35px;
+  &.disabled{
+    background-color: #bbb;
+  }
+}
+.mint-field-state.is-default {
+  margin-left: .07rem;
+}
