@@ -9,7 +9,9 @@ const login = {
     state : {
         userInfo : {
             phone : ''
-        }
+        },
+        reqId : 'mobile_123456',
+        firstMsgSendTimestamp : ''
     },
     mutations  : loginMutations
 }
