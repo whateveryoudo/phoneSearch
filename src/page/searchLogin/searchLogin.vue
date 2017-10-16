@@ -14,7 +14,7 @@
             <!--<p class="top_tip" solt="">我是顶部内容</p>-->
         <!--</mt-popup>-->
         <!--底部下一步按钮组件-->
-        <next-btn :requiredPro="formFiledInfo" formType="login"  text="下一步" @toNext="submitForm"></next-btn>
+        <next-btn :requiredPro="formFiledInfo" formType="login"  text="提交" @toNext="submitForm"></next-btn>
     </div>
 </template>
 <script>
