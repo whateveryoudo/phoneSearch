@@ -91,5 +91,24 @@ html,body,#app{
     color:#fff;
   }
 }
+//表单授权协议
+.switch_container{
+  margin-top:.15rem;
+  padding:0 .1rem;
+  display: flex;
+  .toAgreeMent{
+    display: flex;
+    align-items: center;
+  }
+}
+
+/*子组件过度效果*/
+.router-slid-enter-active,.router-slid-leave-active{
+  transition: all 0.4s;
+}
+.router-slid-enter,.router-slid-leave-active{
+  transform: translateX(.2rem);
+  opacity: 0;
+}
 
 

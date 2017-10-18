@@ -1,6 +1,6 @@
 <template>
     <div class="login_container">
-        <head-top :headTitle="headTitle"></head-top>
+        <head-top isBack="true" :headTitle="headTitle"></head-top>
         <top-progress></top-progress>
         <div class='rating-page'>
             <div class="login_form">
@@ -13,10 +13,17 @@
                     <mt-field label="邮箱" placeholder="请输入邮箱" v-model="userInfo.mail"></mt-field>
                 </section>
             </div>
-            <!--<button @click="test">测试下两步</button>-->
+            <div class="switch_container">
+                <mt-switch v-model="isAgree"></mt-switch>
+                <router-link class="toAgreeMent" to="/yd_login/agreement" style="color:#0894ec;">《用户授权协议》</router-link>
+            </div>
             <!--底部下一步按钮组件-->
-            <next-btn :requiredPro="userInfo" formType="login"  text="下一步" @toNext="submitForm"></next-btn>
+            <next-btn :requiredPro="userInfo" formType="yd_login" :agree="isAgree"  text="下一步" @toNext="submitForm"></next-btn>
         </div>
+        <!--子路由切换-->
+        <transition name="router-slid" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 </template>
 <script>
@@ -39,6 +46,7 @@
                     mail : "",
                     message : ''
                 },
+                isAgree : true,//是否同意协议
                 btnText : '发送验证码',
                 isSendBtnEable : true
             }

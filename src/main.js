@@ -7,14 +7,16 @@ import store from './store'
 import './config/rem'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css';
+import './style/css/animate.css'
 import './style/scss/common.scss'
 import './style/scss/mint-ui-reset.scss'
 //注册组件
 
-import {Field,Button,Popup } from 'mint-ui';
+import {Field,Button,Popup,Switch } from 'mint-ui';
 Vue.component(Field.name, Field);
 Vue.component(Button.name, Button);
 Vue.component(Popup.name, Popup);
+Vue.component(Switch.name, Switch);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
