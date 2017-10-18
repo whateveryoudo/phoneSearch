@@ -18,4 +18,4 @@ export const getCaptcha = (reqId) => axios('/mobile/captcha',{//获取图形验�
 
 export const toSearch = (params) => axios('/mobile/verify',params,'post')//登陆移动
 
-
+export const getReqid = () => axios('/mobile/session',{},'post',false);//获取随机的请求id

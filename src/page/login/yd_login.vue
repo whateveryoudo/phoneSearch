@@ -1,8 +1,8 @@
 <template>
     <div class="login_container">
         <head-top :headTitle="headTitle"></head-top>
+        <top-progress></top-progress>
         <div class='rating-page'>
-
             <div class="login_form">
                 <section class="field-item-container">
                     <mt-field label="姓名" placeholder="请输入姓名"  :attr="{maxlength : 10}" v-model="userInfo.name"></mt-field>
@@ -13,18 +13,19 @@
                     <mt-field label="邮箱" placeholder="请输入邮箱" v-model="userInfo.mail"></mt-field>
                 </section>
             </div>
+            <!--<button @click="test">测试下两步</button>-->
             <!--底部下一步按钮组件-->
             <next-btn :requiredPro="userInfo" formType="login"  text="下一步" @toNext="submitForm"></next-btn>
         </div>
     </div>
-
 </template>
 <script>
     import headTop from '@/components/header/headTop'
     import nextBtn from '@/components/common/nextBtn'
+    import topProgress from '@/components/common/topProgress'
     import {verifyRules} from '@/config/verifyRules'
     import { MessageBox,Toast} from 'mint-ui';
-    import {mapMutations} from 'vuex'
+    import {mapMutations,mapActions,mapGetters} from 'vuex'
     import {getLoginMsg,toLogin} from '@/service/getData'
     export default{
         data(){
@@ -38,30 +39,44 @@
                     mail : "",
                     message : ''
                 },
-                reqId : '',
                 btnText : '发送验证码',
                 isSendBtnEable : true
             }
         },
-        computed : {},
+        computed:{
+            ...mapGetters([
+                'reqId'
+            ]),
+        },
         components : {
             headTop,
-            nextBtn
+            nextBtn,
+            topProgress
         },
         mounted(){
 
         },
         created(){
-            this.reqId = this.$store.state.login.reqId;
+            //获取session随机id
+            if(!this.reqId){
+                this.updateReqid();
+            }
+            //跟新顶部进度
+            this.UPDATE_PROGRESS({stepIndex : 1});
         },
         methods: {
             ...mapMutations([
                 "SAVE_PHONE",
-                "SAVE_TIRSTTIME"
+                "SAVE_TIRSTTIME",
+                "UPDATE_PROGRESS",
+                "SAVE_PROGRESS",
             ]),
+            ...mapActions([
+                "updateReqid"
+            ]),
+
             getMsgCode(){
                 if(!this.isSendBtnEable){return}
-
                 //判断手机号是否存在
                 if(!this.userInfo.username){
                     Toast({
@@ -108,7 +123,6 @@
                 }
             },
 
-
             submitForm(){
 //               //verifyRules.pwd(this.userInfo.pwd)
                 //校验输入是否正确
@@ -125,8 +139,11 @@
                              });
                              //提交store
                              this.SAVE_PHONE({phone : this.userInfo.username});
+
                              setTimeout(() => {
                                  this.$router.push('/searchLogin');
+                                 //跟新顶部的进度
+                                 this.SAVE_PROGRESS({stepIndex : 1});
                              },1000)
                          }else{
                              Toast({
@@ -146,7 +163,9 @@
 </script>
 <style lang="scss">
     @import "src/style/scss/mixin";
-
+    .rating-page{
+        top: 1rem;
+    }
     .getCaptcha.mint-button{
         height:35px;
         margin-left: 0.5rem;

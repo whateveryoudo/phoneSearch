@@ -16,7 +16,7 @@ if(process.env.NODE_ENV == 'development'){
     // baseUrl = 'http://119.23.22.113/api';
     baseUrl = '';
 }else if(process.env.NODE_ENV == 'production'){
-
+    baseUrl = 'http://119.23.22.113/api';
 }
 
 export {

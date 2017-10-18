@@ -27,7 +27,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: process.env.PORT || 8080,
+    port: process.env.PORT || 8081,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -62,7 +62,13 @@ module.exports = {
             pathRewrite: {
                 '^/mobile/verify': '/mobile/verify'
             }
-        }
+        },
+        '/mobile/session': {
+            target: 'http://119.23.22.113:80/api',
+            pathRewrite: {
+                '^/mobile/verify': '/mobile/session'
+            }
+        },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

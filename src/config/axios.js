@@ -26,7 +26,7 @@ export default (url = '', data = {}, type = 'get',isLoading = true) => {
         baseURL : baseUrl,
 		method : type,
         //设置超时时间
-        timeout: 2000,
+        timeout: 10000,
         transformResponse: [function (data) {
             Indicator.close();
 		    return data;
