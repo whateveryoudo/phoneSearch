@@ -65,14 +65,12 @@
 
         },
         created(){
-            this.SAVE_PHONE();
-            return;
             //获取session随机id
-//            if(!this.reqId){
-//                this.updateReqid();
-//            }
-//            //跟新顶部进度
-//            this.UPDATE_PROGRESS({stepIndex : 1});
+            if(!this.reqId){
+                this.updateReqid();
+            }
+            //跟新顶部进度
+            this.UPDATE_PROGRESS({stepIndex : 1});
         },
         methods: {
             ...mapMutations([
