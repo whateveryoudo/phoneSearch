@@ -11,6 +11,46 @@ export const verifyRules =  {
         }
         return true;
     },
+    idCardNo(val){
+        if(!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/).test(val)){
+            Toast({
+                message: '请输入合法证件号码',
+                position: 'middle',
+                duration: 2000
+            });
+            return false;
+        }
+        return true;
+    },
+    againDxPwd(pwd,againPwd){
+        if(!pwd || !againPwd){
+            return false;
+        }
+        if(this.dxPwd(againPwd)){
+            if(pwd !== againPwd){
+                Toast({
+                    message: '两次输入的密码不一致',
+                    position: 'middle',
+                    duration: 2000
+                });
+                return false;
+            }else{
+                return true;
+            }
+        }
+    },
+    dxPwd(val){
+        val = val.trim();
+        if(val.length < 6 || !(/^[0-9]*$/).test(val)){
+            Toast({
+                message: '新密码由6位数字组成',
+                position: 'middle',
+                duration: 2000
+            });
+            return false;
+        }
+        return true;
+    },
     phone(val){
         if(!(/^(13[0-9]|14[5|7]|15[0-35-9]|17[0-8]|18[0-9])\d{8}$/).test(val)){
             Toast({

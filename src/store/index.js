@@ -5,11 +5,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import loginMutations  from './login/mutations'
 import loginActions  from './login/actions'
+
+
+import dxLoginMutations  from './login/mutations'
+import dxLoginActions  from './login/actions'
 Vue.use(Vuex)
 
 const loginGetters = {
     reqId : state => state.reqId
 }
+
 const login = {
     state : {
         userInfo : {

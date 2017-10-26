@@ -49,7 +49,6 @@
                 setTimeout(() => {
                     this.$router.push(this.routeLink[type - 1]);
                 },100)
-
             }
         }
     }
@@ -58,9 +57,10 @@
     @import "src/style/scss/mixin";
     .container{
         overflow:hidden;
-        background: -webkit-linear-gradient(bottom, rgba(102,192,255,1), rgba(28,162,255,1));
+        background: -webkit-linear-gradient(bottom, rgba(92, 188, 255, 0.42), rgba(43, 168, 255, 0.77));
         height:100%;
         color:#eee;
+        text-shadow : 0 1px 2px rgba(0,0,0,.5);
         header{
             text-align: center;
             margin-top: .5rem;
@@ -72,11 +72,11 @@
                 flex-direction: column;
                 align-items: center;
                 li.phone_choose_item{
-                    margin-top:.8rem;
+                    margin-top:.4rem;
                     transition:all .2s;
                     .phone_icon{
                         margin: 0 auto;
-                        margin-bottom:.2rem;
+                        margin-bottom:.1rem;
                         border : 5px solid transparent;
                         border-radius : 50%;
                         img{
@@ -91,9 +91,9 @@
                     }
                     }
                     &:nth-of-type(1).choosed{
-                         color:rgb(255,148,21);
+                         color:#159cff;
                          .phone_icon{
-                             border : 5px solid rgb(255,148,21);
+                             border : 5px solid #159cff;
                              border-radius : 50%;
                          }
                      }

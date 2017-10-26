@@ -26,6 +26,7 @@
 <style lang="scss" scoped>
     @import "src/style/scss/mixin";
     header{
+        letter-spacing: .5px;
     @include hl(.45rem,.45rem);
         position: fixed;
         top:0;

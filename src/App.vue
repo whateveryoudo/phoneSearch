@@ -10,7 +10,13 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+    created(){
+      //添加去除字符串前后空格方法
+        String.prototype.trim = function(){
+            return this.replace(/(^\s*)|(\s*$)/g,'');
+        }
+    }
 }
 </script>
 

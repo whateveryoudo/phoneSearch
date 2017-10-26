@@ -3,7 +3,7 @@
         <head-top :isBack="false" :headTitle="headTitle"></head-top>
         <top-progress></top-progress>
         <div class='rating-page'>
-            <img class="status_icon" src="../../assets/icons/smail.png" alt="">
+            <img class="status_icon" src="../../../assets/icons/smail.png" alt="">
             <p>通话详单即将发送到你的邮箱，请注意查收。</p>
             <p>感谢你的使用！</p>
             <div class='submit_btn_container'>

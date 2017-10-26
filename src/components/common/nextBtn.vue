@@ -22,12 +22,10 @@
                         return false;
                     }
                 }
+
                 switch (this.formType){//页面类型判断
                     case 'yd_login':
-                        if(this.agree){
-                            return true;
-                        }
-                        break;
+                        return this.agree
                 }
                 return true;
 
@@ -47,5 +45,10 @@
     }
 </script>
 <style lang="scss">
+    .submit_btn_container{
+        button{
+            letter-spacing: 1px;
+        }
 
+    }
 </style>

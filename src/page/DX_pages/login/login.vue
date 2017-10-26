@@ -7,8 +7,8 @@
                 <section class="field-item-container">
                     <mt-field label="姓名" placeholder="请输入姓名"  :attr="{maxlength : 10}" v-model="userInfo.name"></mt-field>
                     <mt-field label="电话号码" placeholder="请输入电话号码"  v-model="userInfo.username"></mt-field>
-                    <!--<mt-field label="服务密码" placeholder="请输入服务密码" type="password"  v-model="userInfo.pwd"><span solt="" class="forgetPwd" @click="handleForgetPwd">忘记密码</span></mt-field>-->
-                    <mt-field label="短信验证码" placeholder="请输入" v-model="userInfo.message" :attr="{maxlength : 6}"><mt-button class="getMsgCode" type="primary" size="normal" @click.native="getMsgCode" :class="!isSendBtnEable && 'disabled'" v-text="btnText"></mt-button></mt-field>
+                    <mt-field label="服务密码" placeholder="请输入服务密码" type="password"  v-model="userInfo.pwd"><span solt="" class="forgetPwd" @click="handleForgetPwd">忘记密码</span></mt-field>
+                    <!--<mt-field label="短信验证码" placeholder="请输入" v-model="userInfo.message" :attr="{maxlength : 6}"><mt-button class="getMsgCode" type="primary" size="normal" @click.native="getMsgCode" :class="!isSendBtnEable && 'disabled'" v-text="btnText"></mt-button></mt-field>-->
 
                     <mt-field label="邮箱" placeholder="请输入邮箱" v-model="userInfo.mail"></mt-field>
                 </section>
@@ -37,14 +37,13 @@
     export default{
         data(){
             return {
-                headTitle : '四川移动登陆',
+                headTitle : '四川电信登陆',
                 timer : null,
                 count : 59,
                 userInfo : {
                     name : '',
                     username: '',
-                    mail : "",
-                    message : ''
+                    pwd : ''
                 },
                 isAgree : true,//是否同意协议
                 btnText : '发送验证码',
@@ -65,6 +64,8 @@
 
         },
         created(){
+            this.SAVE_PHONE();
+            return;
             //获取session随机id
             if(!this.reqId){
                 this.updateReqid();
@@ -82,7 +83,9 @@
             ...mapActions([
                 "updateReqid"
             ]),
-
+            handleForgetPwd(){
+                this.$router.push('/pwdReset');
+            },
             getMsgCode(){
                 if(!this.isSendBtnEable){return}
                 //判断手机号是否存在
@@ -166,6 +169,9 @@
                 }
 
             }
+        },
+        watch : {
+
         }
     }
 </script>
@@ -173,6 +179,9 @@
     @import "src/style/scss/mixin";
     .rating-page{
         top: 1rem;
+    }
+    .forgetPwd{
+        color:$blue;
     }
     .getCaptcha.mint-button{
         height:35px;
