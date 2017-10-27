@@ -7,8 +7,8 @@ import loginMutations  from './login/mutations'
 import loginActions  from './login/actions'
 
 
-import dxLoginMutations  from './login/mutations'
-import dxLoginActions  from './login/actions'
+import dxLoginMutations  from './dx_login/mutations'
+import dxLoginActions  from './dx_login/actions'
 Vue.use(Vuex)
 
 const loginGetters = {
@@ -16,7 +16,7 @@ const loginGetters = {
 }
 
 const dxLoginGetters = {
-    reqId : state => state.reqId
+    dx_reqId : state => state.reqId  //不能出现两个一样的key
 }
 //移动模块
 const login = {

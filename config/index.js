@@ -1,10 +1,8 @@
-
 'use strict'
 // Template version: 1.1.1
 // see http://vuejs-templates.github.io/webpack for documentation.
-
+const proxyTableData = require('./proxyTableData');
 const path = require('path')
-
 module.exports = {
   build: {
     env: require('./prod.env'),
@@ -31,45 +29,7 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-        //配置代理
-        '/mobile/message': {
-            target: 'http://119.23.22.113:80/api',
-            pathRewrite: {
-                '^/mobile/message': '/mobile/message'
-            }
-        },
-        '/mobile/login': {
-            target: 'http://119.23.22.113:80/api',
-            pathRewrite: {
-                '^/mobile/login': '/mobile/login'
-            }
-        },
-        '/mobile/captcha': {
-            target: 'http://119.23.22.113:80/api',
-            pathRewrite: {
-                '^/mobile/captcha': '/mobile/captcha'
-            }
-        },
-        '/mobile/sms': {
-            target: 'http://119.23.22.113:80/api',
-            pathRewrite: {
-                '^/mobile/sms': '/mobile/sms'
-            }
-        },
-        '/mobile/verify': {
-            target: 'http://119.23.22.113:80/api',
-            pathRewrite: {
-                '^/mobile/verify': '/mobile/verify'
-            }
-        },
-        '/mobile/session': {
-            target: 'http://119.23.22.113:80/api',
-            pathRewrite: {
-                '^/mobile/verify': '/mobile/session'
-            }
-        },
-    },
+    proxyTable: proxyTableData,
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

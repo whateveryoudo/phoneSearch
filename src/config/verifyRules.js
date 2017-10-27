@@ -51,9 +51,9 @@ export const verifyRules =  {
         }
         return true;
     },
-    phone(val){
+    phone(val,noTip = false){
         if(!(/^(13[0-9]|14[5|7]|15[0-35-9]|17[0-8]|18[0-9])\d{8}$/).test(val)){
-            Toast({
+            !noTip && Toast({
                 message: '手机号码格式错误',
                 position: 'middle',
                 duration: 2000

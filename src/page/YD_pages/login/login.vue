@@ -66,8 +66,10 @@
         },
         created(){
             //获取session随机id
+            console.log(this.reqId);
             if(!this.reqId){
                 this.updateReqid();
+
             }
             //跟新顶部进度
             this.UPDATE_PROGRESS({stepIndex : 1});

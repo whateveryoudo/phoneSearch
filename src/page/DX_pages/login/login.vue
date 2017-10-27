@@ -5,11 +5,10 @@
         <div class='rating-page'>
             <div class="login_form">
                 <section class="field-item-container">
-                    <mt-field label="姓名" placeholder="请输入姓名"  :attr="{maxlength : 10}" v-model="userInfo.name"></mt-field>
-                    <mt-field label="电话号码" placeholder="请输入电话号码"  v-model="userInfo.username"></mt-field>
+                    <!--<mt-field label="姓名" placeholder="请输入姓名"  :attr="{maxlength : 10}" v-model="userInfo.name"></mt-field>-->
+                    <mt-field label="电话号码" @keyup="listenEmailInput" placeholder="请输入电话号码"  v-model="userInfo.username"></mt-field>
                     <mt-field label="服务密码" placeholder="请输入服务密码" type="password"  v-model="userInfo.pwd"><span solt="" class="forgetPwd" @click="handleForgetPwd">忘记密码</span></mt-field>
-                    <!--<mt-field label="短信验证码" placeholder="请输入" v-model="userInfo.message" :attr="{maxlength : 6}"><mt-button class="getMsgCode" type="primary" size="normal" @click.native="getMsgCode" :class="!isSendBtnEable && 'disabled'" v-text="btnText"></mt-button></mt-field>-->
-
+                    <mt-field v-if="captchaUrl" label="图形验证码" placeholder="请输入" v-model="userInfo.captcha" :attr="{maxlength : 6}"><img solt="" class="graph" :src="`data:image/png;base64,${captchaUrl}`" @click='captcha' alt=""></mt-field>
                     <mt-field label="邮箱" placeholder="请输入邮箱" v-model="userInfo.mail"></mt-field>
                 </section>
             </div>
@@ -33,26 +32,24 @@
     import {verifyRules} from '@/config/verifyRules'
     import { MessageBox,Toast} from 'mint-ui';
     import {mapMutations,mapActions,mapGetters} from 'vuex'
-    import {getLoginMsg,toLogin} from '@/service/getData'
+    import {toDxLogin,getDxCaptcha} from '@/service/getData'
     export default{
         data(){
             return {
                 headTitle : '四川电信登陆',
-                timer : null,
-                count : 59,
                 userInfo : {
-                    name : '',
                     username: '',
-                    pwd : ''
+                    pwd : '',
+                    captcha : '',
+                    mail : ''
                 },
                 isAgree : true,//是否同意协议
-                btnText : '发送验证码',
-                isSendBtnEable : true
+                captchaUrl : ''
             }
         },
         computed:{
             ...mapGetters([
-                'reqId'
+                'dx_reqId'
             ]),
         },
         components : {
@@ -64,74 +61,47 @@
 
         },
         created(){
-            this.SAVE_PHONE();
-            return;
             //获取session随机id
             if(!this.reqId){
-                this.updateReqid();
+                this.updateDxReqid();
             }
             //跟新顶部进度
-            this.UPDATE_PROGRESS({stepIndex : 1});
+            this.DX_UPDATE_PROGRESS({stepIndex : 1});
         },
         methods: {
             ...mapMutations([
-                "SAVE_PHONE",
-                "SAVE_TIRSTTIME",
-                "UPDATE_PROGRESS",
-                "SAVE_PROGRESS",
+                "DX_UPDATE_PROGRESS",
+                "DX_SAVE_PROGRESS"
             ]),
             ...mapActions([
-                "updateReqid"
+                "updateDxReqid"
             ]),
-            handleForgetPwd(){
-                this.$router.push('/pwdReset');
+            listenEmailInput(){
+                //判断图形验证码是否存在(通过手机号)
+                if(verifyRules.phone(this.userInfo.username,false)){
+                    captcha();
+                }
             },
-            getMsgCode(){
-                if(!this.isSendBtnEable){return}
-                //判断手机号是否存在
-                if(!this.userInfo.username){
-                    Toast({
-                        message: '请先输入电话号码',
-                        position: 'middle',
-                        duration: 2000
-                    });
-                    return;
-                }
-                if( verifyRules.phone(this.userInfo.username)){
-                    getLoginMsg(this.reqId,this.userInfo.username).then((res) => {
-                        let data = res.data;
-                        if(data.code == 200){
-                            Toast({
-                                message: '短信发送成功!',
-                                position: 'middle',
-                                duration: 2000
-                            });
-                            //将当前时间撮存入store中
-                            this.SAVE_TIRSTTIME({time : new Date().getTime()});
-                            this.isSendBtnEable = false;
-                            this.btnText = "重新发送(" + this.count + "s)";
-                            this.timer = setInterval(() => {
-                                this.count--;
-                                if(this.count <= 0){
-                                    clearInterval(this.timer);
-                                    this.btnText = '重新发送';
-                                    this.isSendBtnEable = true;
-                                    this.count = 59;
-                                }else{
-                                    this.btnText = "重新发送(" + this.count + "s)";
-                                }
-                            },1000)
-                        }else{
-                            Toast({
-                                message: data.msg || '服务器出错...',
-                                position: 'middle',
-                                duration: 2000
-                            });
-                        }
-                    }).catch((err) => {
-                        throw new Error(err);
-                    });
-                }
+            captcha(){
+                getDxCaptcha(this.reqId).then((res) => {
+                    let data = res.data;
+                    if(data.code == 200){
+                        this.captchaUrl = data.data.captcha || '';
+                    }else{
+                        this.captchaUrl = '';
+                    }
+                }).catch((err) => {
+                    throw new Error(err);
+                });
+            },
+            handleForgetPwd(){
+                Toast({//暂时未开通
+                    message: '功能暂未开通',
+                    position: 'middle',
+                    duration: 2000
+                });
+                return;
+                this.$router.push('/pwdReset');
             },
 
             submitForm(){
@@ -140,7 +110,7 @@
                 if(verifyRules.phone(this.userInfo.username)
                     && verifyRules.email(this.userInfo.mail)){
                     //md5加密密码(提交上传)
-                    toLogin({...this.userInfo,reqId : this.reqId}).then((res) => {
+                    toDxLogin({...this.userInfo,reqId : this.reqId}).then((res) => {
                         let data = res.data;
                          if(data.code == 200){
                              Toast({

@@ -23,7 +23,7 @@ export default {
     },
     [DX_SAVEREQID](state,{reqId}){
         if(reqId){
-            state.reqId  = reqId;
+            state.dx_reqId  = reqId;
         }
     },
     [DX_SAVE_PROGRESS](state,{stepIndex}){
