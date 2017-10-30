@@ -9,9 +9,7 @@ import {
     SAVE_PROGRESS
 } from './types'
 export default {
-    [SAVE_PHONE](state){
-        console.log(state);
-        return;
+    [SAVE_PHONE](state,{phone}){
         if(phone){
             state.userInfo.phone = phone
         }

@@ -17,12 +17,13 @@
                     </div>
                     <p>中国电信</p>
                 </li>
-                <li  @click="toLoginPage(3)" :class="[currentIndex == 3 && 'choosed']" class="phone_choose_item" >
-                    <div class="phone_icon">
-                        <img src="../../assets/icons/china_lt.png" alt="中国联通">
-                    </div>
-                    <p>中国联通</p>
-                </li>
+                <!--v1.1.0去掉-->
+                <!--<li  @click="toLoginPage(3)" :class="[currentIndex == 3 && 'choosed']" class="phone_choose_item" >-->
+                    <!--<div class="phone_icon">-->
+                        <!--<img src="../../assets/icons/china_lt.png" alt="中国联通">-->
+                    <!--</div>-->
+                    <!--<p>中国联通</p>-->
+                <!--</li>-->
             </ul>
 
         </section>
@@ -72,7 +73,7 @@
                 flex-direction: column;
                 align-items: center;
                 li.phone_choose_item{
-                    margin-top:.4rem;
+                    margin-top:.8rem;
                     transition:all .2s;
                     .phone_icon{
                         margin: 0 auto;

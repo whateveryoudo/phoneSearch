@@ -4,7 +4,7 @@ import {
 import axios from 'axios'
 import { Indicator} from 'mint-ui'
 
-export default (url = '', data = {}, type = 'get',isLoading = true) => {
+export default (url = '', data = {}, type = 'get',loadingTxt = '加载中',isLoading = true) => {
     if (type == 'get') {
         let dataStr = ''; //数据拼接字符串
         Object.keys(data).forEach(key => {
@@ -17,7 +17,7 @@ export default (url = '', data = {}, type = 'get',isLoading = true) => {
     }
     if(isLoading){
         Indicator.open({
-            text : '加载中...',
+            text : loadingTxt,
             spinnerType: 'snake'
         })
     }

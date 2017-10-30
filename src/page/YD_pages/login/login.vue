@@ -13,12 +13,13 @@
                     <mt-field label="邮箱" placeholder="请输入邮箱" v-model="userInfo.mail"></mt-field>
                 </section>
             </div>
-            <div class="switch_container">
-                <mt-switch v-model="isAgree"></mt-switch>
-                <router-link class="toAgreeMent" to="/yd_login/agreement" style="color:#0894ec;">《用户授权协议》</router-link>
-            </div>
+            <!--<div class="switch_container">-->
+                <!--<mt-switch v-model="isAgree"></mt-switch>-->
+                <!--<router-link class="toAgreeMent" to="/yd_login/agreement" style="color:#0894ec;">《用户授权协议》</router-link>-->
+            <!--</div>-->
             <!--底部下一步按钮组件-->
-            <next-btn :requiredPro="userInfo" formType="yd_login" :agree="isAgree"  text="下一步" @toNext="submitForm"></next-btn>
+            <!--:agree="isAgree"-->
+            <next-btn :requiredPro="userInfo" formType="yd_login"   text="下一步" @toNext="submitForm"></next-btn>
         </div>
         <!--子路由切换-->
         <transition name="router-slid" mode="out-in">
@@ -46,7 +47,7 @@
                     mail : "",
                     message : ''
                 },
-                isAgree : true,//是否同意协议
+//                isAgree : true,//是否同意协议
                 btnText : '发送验证码',
                 isSendBtnEable : true
             }
@@ -66,7 +67,6 @@
         },
         created(){
             //获取session随机id
-            console.log(this.reqId);
             if(!this.reqId){
                 this.updateReqid();
 

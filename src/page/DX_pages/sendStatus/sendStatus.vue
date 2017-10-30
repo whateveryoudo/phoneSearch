@@ -1,7 +1,7 @@
 <template>
     <div class='status_container'>
         <head-top :isBack="false" :headTitle="headTitle"></head-top>
-        <top-progress></top-progress>
+        <top-progress :moduleType="searchType"></top-progress>
         <div class='rating-page'>
             <img class="status_icon" src="../../../assets/icons/smail.png" alt="">
             <p>通话详单即将发送到你的邮箱，请注意查收。</p>
@@ -19,6 +19,7 @@
     export default{
         data(){
             return {
+                searchType : 'DX',
                 headTitle : '查询结果'
             }
         },
@@ -31,11 +32,11 @@
         },
         created(){
             //初始顶部进度
-            this.SAVE_PROGRESS({stepIndex : 3});
+            this.DX_SAVE_PROGRESS({stepIndex : 3});
         },
         methods: {
             ...mapMutations([
-                "SAVE_PROGRESS",
+                "DX_SAVE_PROGRESS",
             ]),
             toHome(){
                 this.$router.push('/');

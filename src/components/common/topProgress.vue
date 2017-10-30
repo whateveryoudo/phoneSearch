@@ -22,14 +22,29 @@
 
             }
         },
+        props : ['moduleType'],
         computed : {
+            modulePorStr : function(){
+                let modulePorStr = 'login';//默认移动模块
+                if(this.moduleType){
+                    switch (this.moduleType){
+                        case 'DX':
+                            modulePorStr = 'dx_login';
+                            break;
+                        case 'LT':
+                            modulePorStr = 'lt_login';
+                            break;
+                    }
+                }
+                return modulePorStr
+            },
             prevSteps : function(){//去除最后一项
-                let progressSteps = JSON.parse(JSON.stringify(this.$store.state.login.progressSteps));//深拷贝
+                let progressSteps = JSON.parse(JSON.stringify(this.$store.state[this.modulePorStr].progressSteps));//深拷贝
                 progressSteps.splice(progressSteps.length - 1,1);
                 return progressSteps;
             },
             lastStep : function(){
-                let progressSteps = JSON.parse(JSON.stringify(this.$store.state.login.progressSteps));
+                let progressSteps = JSON.parse(JSON.stringify(this.$store.state[this.modulePorStr].progressSteps));
                 return progressSteps[progressSteps.length - 1];
 
             }
@@ -39,7 +54,9 @@
         },
         created(){
         },
-        methods: {}
+        methods: {
+
+        }
     }
 </script>
 <style lang="scss">

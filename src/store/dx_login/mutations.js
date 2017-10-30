@@ -9,9 +9,7 @@ import {
     DX_SAVE_PROGRESS
 } from './types'
 export default {
-    [DX_SAVE_PHONE](state){
-        console.log(state);
-        return;
+    [DX_SAVE_PHONE](state,{phone}){
         if(phone){
             state.userInfo.phone = phone
         }
@@ -23,7 +21,7 @@ export default {
     },
     [DX_SAVEREQID](state,{reqId}){
         if(reqId){
-            state.dx_reqId  = reqId;
+            state.reqId  = reqId;
         }
     },
     [DX_SAVE_PROGRESS](state,{stepIndex}){

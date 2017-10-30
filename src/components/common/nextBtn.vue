@@ -12,7 +12,8 @@
             return {
             }
         },
-        props : ['requiredPro','text','formType','agree'],
+        //        ,'agree'
+        props : ['requiredPro','text','formType'],
         computed : {
             toNextStep : function(){
                 //是否能够点击下一步
@@ -23,10 +24,10 @@
                     }
                 }
 
-                switch (this.formType){//页面类型判断
-                    case 'yd_login':
-                        return this.agree
-                }
+//                switch (this.formType){//页面类型判断
+//                    case 'yd_login':
+//                        return this.agree
+//                }
                 return true;
 
             }
