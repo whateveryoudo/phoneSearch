@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
 import store from './store'
 import './config/rem'
 import Mint from 'mint-ui'
@@ -12,12 +13,19 @@ import './style/scss/common.scss'
 import './style/scss/mint-ui-reset.scss'
 //注册组件
 
-import {Field,Button,Popup,Switch } from 'mint-ui';
+import {Field,Button,Popup,Switch,TabContainer, TabContainerItem,Cell,Navbar, TabItem } from 'mint-ui';
 Vue.component(Field.name, Field);
+Vue.component(Cell.name, Cell);
 Vue.component(Button.name, Button);
 Vue.component(Popup.name, Popup);
 Vue.component(Switch.name, Switch);
+Vue.component(Navbar.name, Navbar);
+Vue.component(TabItem.name, TabItem);
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.config.productionTip = false
+
+
 
 /* eslint-disable no-new */
 new Vue({

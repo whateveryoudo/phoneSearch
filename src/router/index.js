@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home');
+
+const callList = r => require.ensure([], () => r(require('../page/callList/callList')), 'callList');
+const test = r => require.ensure([], () => r(require('../page/test')), 'test');
 //移动业务
 const yd_login = r => require.ensure([], () => r(require('../page/YD_pages/login/login')), 'yd_login');
 const search_login = r => require.ensure([], () => r(require('../page/YD_pages/searchLogin/searchLogin')), 'searchLogin');
@@ -18,6 +21,11 @@ const agreement = r => require.ensure([], () => r(require('../page/agreement')),
 Vue.use(Router)
 export default new Router({
   routes: [
+      // {
+      //     path: '/',
+      //     name: 'callList',
+      //     component: callList
+      // },
       {
           path: '/',
           name: 'home',
