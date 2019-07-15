@@ -30,8 +30,7 @@
         position: fixed;
         top:0;
         text-align: center;
-        background-color:$blue;
-    @include sc(.17rem,#fff);
+    @include sc(.17rem,#000);
     @include fj;
         width:100%;
     .titleName{
@@ -44,7 +43,7 @@
     @include wh(.20rem,.20rem);
         left:3%;
         display: inline-block;
-        background: url(../../assets/icons/arrow-left.png) no-repeat;
+        background: url(../../assets/icons/arrow-left-black.png) no-repeat;
         background-size: 100% 100%;
     }
     }

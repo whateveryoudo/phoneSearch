@@ -1,4 +1,6 @@
 //scss文件
+@import "./mixin";
+
 .mint-button{
   font-size:14px;
   height:35px;
@@ -6,6 +8,43 @@
     background-color: #bbb;
   }
 }
+//按钮样式
+.mint-button--primary {
+  background-color: $color-primary;
+}
+.mint-button{
+  border-radius: 30px;
+
+}
+//switch
+.mint-switch-input:checked + .mint-switch-core{
+  border-color:  $color-primary;
+  background-color:  $color-primary;
+}
+//表单样式
+.login_container{
+  .mint-cell:first-child .mint-cell-wrapper {
+    background-origin: content-box;
+  }
+  .mint-cell-wrapper{
+    padding:0 .15rem;
+    background-size: 100% 1px;
+    font-size: 14px;
+    background-position: bottom left;
+  }
+  .mint-field .mint-cell-title {
+    width: 85px;
+  }
+}
+.info-block-item{
+  .mint-cell-text{
+    color:#888;
+  }
+  .mint-cell-value{
+    color:#333;
+  }
+}
+
 .mint-field-state.is-default {
   margin-left: .07rem;
 }

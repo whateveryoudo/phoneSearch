@@ -11,8 +11,11 @@ import './style/scss/common.scss'
 import './style/scss/mint-ui-reset.scss'
 //注册组件
 
-import {Field,Button,Popup } from 'mint-ui';
+import {Field,Button,Popup,Cell,Switch } from 'mint-ui';
+
+Vue.component(Switch.name, Switch);
 Vue.component(Field.name, Field);
+Vue.component(Cell.name, Cell);
 Vue.component(Button.name, Button);
 Vue.component(Popup.name, Popup);
 Vue.config.productionTip = false

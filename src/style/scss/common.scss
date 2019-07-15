@@ -22,11 +22,15 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
 
 html,body,#app{
   height: 100%;
-  background-color: #eee;
+}
+#app{
+  background-color: #fff;
 }
 
 
-
+.little-font{
+  font-size: 12px;
+}
 /*子组件过度效果*/
 .router-slid-enter-active,.router-slid-leave-active{
   transition: all 0.4s;
@@ -38,11 +42,11 @@ html,body,#app{
 //通用子路由页面样式
 .rating-page{
   position: fixed;
-  top: 0.45rem;
+  top: 0; //不要顶
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f5f5f5;
+  //background-color: #f5f5f5;
   //z-index: 204;
   overflow-y: auto;
   //padding-top: 1.95rem;
@@ -75,10 +79,11 @@ html,body,#app{
   display: none;
 }
 .btn-container {
-  margin: 0.15rem auto;
-  padding: 0 0.1rem;
+  margin: 0.3rem auto;
+  padding: 0 0.15rem;
   .mint-button{
-    height:41px;
+    height:45px;
+    line-height: 45px;
   }
 }
 //顶部提示
@@ -91,5 +96,66 @@ html,body,#app{
     color:#fff;
   }
 }
+//分割块
+.divider-block{
+  width: 100%;
+  height:.1rem;
+  background-color: #f5f5f5;;
+}
+//显示列表块
+.info-block-item{
+  margin-bottom: .1rem;
+  .mint-cell-wrapper{
+    background-image: none;
+  }
+  .info-block-item-header{
+    align-items: center;
+    @include fj();
+    box-sizing: border-box;
+    margin-left:.15rem;
+    padding:0 .1rem;
+    height:48px;
+    line-height: 48px;
+    font-size: 16px;
+    position: relative;
+    a{
+      font-size: 14px;
+    }
+    &:after{
+      content: ' ';
+      background-color:$color-primary;
+      width:3px;
+      height:.12rem;
+      border-radius: 3px;
+      position: absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+    }
+  }
+  .info-item-cell{
+    @include fj(flex-start);
+    height:45px;
+    line-height:45px;
+    padding:0 .15rem;
+    color:#888;
+    &.cell-small{
+      height:35px;
+      line-height:35px;
+    }
+  }
 
+}
+//checkbox span模拟
+span.checkbox{
+  display: inline-block;
+  width: .2rem;
+  height: auto;
+  background:url('../../assets/icons/check_box.png') no-repeat;
+  background-size: 100% 100%;
+  &.selected{
+    background:url('../../assets/icons/check_box_selected.png') no-repeat;
+    background-size: 100% 100%;
+  }
 
+}

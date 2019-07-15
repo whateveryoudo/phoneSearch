@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <transition name="router-fade" mode="out-in">
-      <!--<keep-alive>-->
-      <router-view v-if="!$route.meta.keepAlive"></router-view>
-      <!--</keep-alive>-->
-    </transition>
+    <!--<keep-alive>-->
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <!--</keep-alive>-->
+    <!--vivo webview兼容问题-->
+    <!--<transition name="router-fade" mode="out-in">-->
+      <!---->
+    <!--</transition>-->
   </div>
 </template>
 

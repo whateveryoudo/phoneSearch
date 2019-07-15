@@ -1,7 +1,8 @@
 $blue: #26a2ff;
 $bc: #e4e4e4;
 $fc:#fff;
-
+/* 覆盖mint-ui的primary颜色，改为微信UI的绿色 */
+$color-primary: #4048E0;
 // 背景图片地址和大小
 @mixin bis($url) { 
 	background-image: url($url);
@@ -67,8 +68,9 @@ $fc:#fff;
 }
 
 //flex 布局和 子元素 对其方式
-@mixin fj($type: space-between){
+@mixin fj($type: space-between,$vType:center){
 	display: flex;
 	justify-content: $type;
+	align-items: $vType;
 
 }
