@@ -1,7 +1,10 @@
 <template>
     <div class="login_container">
         <div class='rating-page'>
-            <div class="nav_wrapper">
+            <div class="logo">
+                <img :src="logo" alt="">
+            </div>
+            <div class="nav_wrapper" style="display: none">
                     <div class="nav_item"
                          @click="toggleTab(0)"
                          :class="{selected : selectedTab === 0}"
@@ -60,12 +63,13 @@
     export default{
         data(){
             return {
+                logo : require('@/assets/top_logo.png'),
                 //模拟登录用户手机匹配（白名单）
                 whiteUserList : {
-                    13269982414 : {username : 13269982414,password : 'qazweo123'},
-                    15910459178 : {username : 15910459178,password : 'krthu890'},
-                    15806476527 : {username : 15806476527,password : 'qazplml'},
-                    17359082567 : {username : 17359082567,password : '123007n'},
+                    15910459177 : {username : 15910459177,password : 'nienie12345'},
+                    18788662415 : {username : 18788662415,password : 'zhouming1122'},
+                    18567451423 : {username : 18567451423,password : 'qweazm123'},
+                    14708052156 : {username : 14708052156,password : 'yanghonge512'}
                 },
                 selectedTab : 0,
                 timer : null,
@@ -100,7 +104,6 @@
 
         },
         created(){
-
         },
         methods: {
             //切换登录方式
@@ -252,6 +255,10 @@
 </script>
 <style lang="scss" scope>
     @import "src/style/scss/mixin";
+    .logo{
+        text-align: center;
+        margin-bottom: .2rem;
+    }
     .nav_wrapper{
         box-sizing: border-box;
         margin-bottom: .3rem;
@@ -289,7 +296,7 @@
     }
     .login_container{
         .rating-page{
-            top: .9rem;
+            top: .5rem;
             background-color: #fff;
         }
     }

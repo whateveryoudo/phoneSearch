@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Demo{
+        onChange() {
+            console.log(this);
+        }
+    }
+    const demo = new Demo();
+    demo.onChange();
+    function  getType(data) {
+        let type = Object.prototype.toString.call(data);
+        let typeArr = ['String', 'Object', 'Number', 'Array', 'Undefined', 'Function', 'Null', 'Symbol'];
+        let name;
+        for (let i = 0; i < typeArr.length; i++) {
+            if ("[object " + typeArr[i] + "]" === type) {
+                name = typeArr[i]
+            }
+        }
+        return name
+    }
+    function deepClone(data) {
+        let type = this.getType(data);
+        let obj;
+        if (type === 'Array') {
+            obj = [];
+        } else if (type === 'Object') {
+            obj = {};
+        } else {
+            return data;
+        }
+        if (type === 'Array') {
+            for (let i = 0, len = data.length; i < len; i++) {
+                obj.push(this.deepClone(data[i]));
+            }
+        } else if (type === 'Object') {
+            for (let key in data) {
+                obj[String(key)] = this.deepClone(data[key]);
+            }
+        }
+        return obj;
+    };
+    var series =  [{
+        type: 'gauge',
+        name: '测试⼀一',
+        startAngle: 225,
+        endAngle: -45,
+        radius: '50%',
+        center: ['50%', '55%'],
+        min: 0,
+        max: 100,
+        splitNumber: 5,
+        axisLine: {
+            lineStyle: {
+                width: 3,
+                color: [
+                    [1, '#797979']
+                ]
+            }
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            show: true,
+            distance: -70,
+            fontSize: 20
+        },
+        splitLine: {
+            lineStyle: {
+                width: 0
+            }
+        },
+        itemStyle: {
+            color: '#3487E9'
+        },
+        pointer: {
+            show: true,
+            length: '100%'
+        },
+        detail: {
+            offsetCenter: [0, '70%'],
+            textStyle: {
+                fontSize: 20,
+                color: '#3487E9'
+            },
+        },
+        data: [{
+            name: "",
+            value: 80
+        }]
+    }, {
+        type: 'gauge',
+        splitNumber: 1,
+        startAngle: 225,
+        endAngle: 183,
+        radius: '80%',
+        center: ['50%', '55%'],
+        axisLine: {
+            lineStyle: {
+                width: 0,
+                shadowBlur: 0
+            }
+        },
+        axisTick: {
+            show: true,
+            lineStyle: {
+                color: '#3487E9',
+                width: 5
+            },
+            length: '10%',
+            splitNumber: 10
+        },
+        splitLine: {
+            show: true,
+            length: '12%',
+            lineStyle: {
+                width: 5,
+                color: '#3487E9'
+            }
+        },
+        axisLabel: {
+            show: false
+        },
+        detail: {
+            show: false
+        },
+        markPoint: {
+            symbol: 'circle',
+            symbolSize: 5,
+            itemStyle: {
+                color: "#fff"
+            },
+            data: [{
+                x: "50%",
+                y: "55%"
+            }]
+        }
+    }, {
+        type: 'gauge',
+        splitNumber: 1,
+        startAngle: 168,
+        endAngle: 126,
+        radius: '80%',
+        center: ['50%', '55%'],
+        axisLine: {
+            lineStyle: {
+                width: 0,
+                shadowBlur: 0
+            }
+        },
+        axisTick: {
+            show: true,
+            lineStyle: {
+                color: '#26c0f0',
+                width: 5
+            },
+            length: '10%',
+            splitNumber: 10
+        },
+        splitLine: {
+            show: true,
+            length: '12%',
+            lineStyle: {
+                width: 5,
+                color: '#26c0f0'
+            }
+        },
+        axisLabel: {
+            show: false
+        },
+        detail: {
+            show: false
+        },
+        markPoint: {
+            symbol: 'circle',
+            symbolSize: 5,
+            itemStyle: {
+                color: "#fff"
+            },
+            data: [{
+                x: "50%",
+                y: "55%"
+            }]
+        }
+    }, {
+        type: 'gauge',
+        splitNumber: 1,
+        startAngle: 111,
+        endAngle: 69,
+        radius: '80%',
+        center: ['50%', '55%'],
+        axisLine: {
+            lineStyle: {
+                width: 0,
+                shadowBlur: 0
+            }
+        },
+        axisTick: {
+            show: true,
+            lineStyle: {
+                color: '#3487E9',
+                width: 5
+            },
+            length: '10%',
+            splitNumber: 10
+        },
+        splitLine: {
+            show: true,
+            length: '12%',
+            lineStyle: {
+                width: 5,
+                color: '#3487E9'
+            }
+        },
+        axisLabel: {
+            show: false
+        },
+        detail: {
+            show: false
+        },
+        markPoint: {
+            symbol: 'circle',
+            symbolSize: 5,
+            itemStyle: {
+                color: "#fff"
+            },
+            data: [{
+                x: "50%",
+                y: "55%"
+            }]
+        }
+    }, {
+        type: 'gauge',
+        splitNumber: 1,
+        startAngle: 54,
+        endAngle: 12,
+        radius: '80%',
+        center: ['50%', '55%'],
+        axisLine: {
+            lineStyle: {
+                width: 0,
+                shadowBlur: 0
+            }
+        },
+        axisTick: {
+            show: true,
+            lineStyle: {
+                color: '#26c0f0',
+                width: 5
+            },
+            length: '10%',
+            splitNumber: 10
+        },
+        splitLine: {
+            show: true,
+            length: '12%',
+            lineStyle: {
+                width: 5,
+                color: '#26c0f0'
+            }
+        },
+        axisLabel: {
+            show: false
+        },
+        detail: {
+            show: false
+        },
+        markPoint: {
+            symbol: 'circle',
+            symbolSize: 5,
+            itemStyle: {
+                color: "#fff"
+            },
+            data: [{
+                x: "50%",
+                y: "55%"
+            }]
+        }
+    }, {
+        type: 'gauge',
+        splitNumber: 1,
+        startAngle: -3,
+        endAngle: -45,
+        radius: '80%',
+        center: ['50%', '55%'],
+        axisLine: {
+            lineStyle: {
+                width: 0,
+                shadowBlur: 0
+            }
+        },
+        axisTick: {
+            show: true,
+            lineStyle: {
+                color: '#3487E9',
+                width: 5
+            },
+            length: '10%',
+            splitNumber: 10
+        },
+        splitLine: {
+            show: true,
+            length: '12%',
+            lineStyle: {
+                width: 5,
+                color: '#3487E9'
+            }
+        },
+        axisLabel: {
+            show: false
+        },
+        detail: {
+            show: false
+        },
+        markPoint: {
+            symbol: 'circle',
+            symbolSize: 5,
+            itemStyle: {
+                color: "#fff"
+            },
+            data: [{
+                x: "50%",
+                y: "55%"
+            }]
+        }
+    }
+    ]
+
+//    console.log(JSON.stringify(series));
+</script>
+</html>

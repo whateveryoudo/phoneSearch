@@ -13,6 +13,7 @@ const repayResult = r => require.ensure([], () => r(require('../page/repayResult
 const yd_login = r => require.ensure([], () => r(require('../page/login/yd_login')), 'yd_login');
 const search_login = r => require.ensure([], () => r(require('../page/searchLogin/searchLogin')), 'searchLogin');
 const sendStatus = r => require.ensure([], () => r(require('../page/sendStatus/sendStatus')), 'sendStatus');
+const Test = r => require.ensure([], () => r(require('../page/test/test.vue')), 'sendStatus');
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -21,6 +22,11 @@ export default new Router({
       name: 'userLogin',
       component: userLogin
     },
+      {
+          path: '/test',
+          name: '测试界面',
+          component: Test
+      },
       {
           path: '/confirmLoan',
           name: 'confirmLoan',

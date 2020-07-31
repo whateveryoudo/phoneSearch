@@ -8,10 +8,10 @@
                         <div class="list-item-content">
                             <div class="right-info-item">第{{item.period}}期</div>
                             <div class="right-info-item">
-                                <span>还款金额￥{{item.money.toFixed(2)}}</span>
+                                <span>还款金额&nbsp;&nbsp;￥{{item.money.toFixed(2)}}</span>
                                 <span>{{payStatusMap[item.status]}}</span>
                             </div>
-                            <div class="right-info-item">应还日期{{item.repayDate}}</div>
+                            <div class="right-info-item">应还日期&nbsp;&nbsp;{{item.repayDate}}</div>
                         </div>
                     </li>
                 </ul>
@@ -26,14 +26,15 @@
     import {mapMutations,mapActions,mapGetters} from 'vuex'
     import {getLoginMsg,toLogin} from '@/service/getData'
     import { Indicator} from 'mint-ui'
+    import moment from 'moment'
     export default{
         data(){
             return {
                 payStatusMap : ['待还清','已还清'],
                 loanList : [
-                    {period : 1,status : 0,money : 1057.5,repayDate : '2019.08.09'},
-                    {period : 2,status : 0,money : 1057.5,repayDate : '2019.09.09'},
-                    {period : 3,status : 0,money : 1057.5,repayDate : '2019.10.09'},
+                    {period : 1,status : 0,money : 1057.5,repayDate : moment().add(1, 'M').date(9).format('YYYY.MM.DD')},
+                    {period : 2,status : 0,money : 1057.5,repayDate : moment().add(2, 'M').date(9).format('YYYY.MM.DD')},
+                    {period : 3,status : 0,money : 1057.5,repayDate : moment().add(3, 'M').date(9).format('YYYY.MM.DD')},
                 ],
                 headTitle : '分期账单'
             }
@@ -69,7 +70,7 @@
               display: flex;
               div.prefix{
                   position: relative;
-                  width:5%;
+                  width:.15rem;
                   margin-right: .06rem;
                   &:after{
                       content: ' ';
@@ -82,7 +83,7 @@
                   }
               }
               div.list-item-content{
-                  width:95%;
+                  flex : 1;
                   .right-info-item{
                       height:30px;
                       line-height: 30px;
