@@ -66,10 +66,10 @@
                 logo : require('@/assets/top_logo.png'),
                 //模拟登录用户手机匹配（白名单）
                 whiteUserList : {
-                    15910459177 : {username : 15910459177,password : 'nienie12345'},
-                    18788662415 : {username : 18788662415,password : 'zhouming1122'},
-                    18567451423 : {username : 18567451423,password : 'qweazm123'},
-                    14708052156 : {username : 14708052156,password : 'yanghonge512'}
+                    15910459177 : {username : 15910459177,password : 'nienie12345nie'},
+                    18788662415 : {username : 18788662415,password : 'zhouming1122zhou'},
+                    18567451423 : {username : 18567451423,password : 'qweazm123qea'},
+                    14708052156 : {username : 14708052156,password : 'yanghonge512yang'}
                 },
                 selectedTab : 0,
                 timer : null,
