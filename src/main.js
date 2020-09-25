@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import { router } from './router'
 import store from './store'
 import './config/rem'
 import Mint from 'mint-ui'
@@ -11,7 +11,7 @@ import './style/scss/common.scss'
 import './style/scss/mint-ui-reset.scss'
 //注册组件
 
-import {Field,Button,Popup,Cell,Switch } from 'mint-ui';
+import { Field, Button, Popup, Cell, Switch } from 'mint-ui';
 
 Vue.component(Switch.name, Switch);
 Vue.component(Field.name, Field);
@@ -24,7 +24,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-    store,
+  store,
   template: '<App/>',
   components: { App }
 })
