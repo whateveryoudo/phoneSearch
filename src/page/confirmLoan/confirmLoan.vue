@@ -35,6 +35,12 @@
                     text="确认借款"
                     @toNext="toNext"
             ></next-btn>
+            <div class="footer">
+                <p>贷款有风险，借款需谨慎；请根据个人能力合理贷款，理性消费，避免逾期</p>
+                <p>贷款额度、放款时间以实际审批结果为准</p>
+                <p>贷款资金由马上消费金融股份有限公司及/或其合作金融机构提供</p>
+                <p>2015-2020  马上消费金融股份有限公司  版权所有 渝ICP备15005075号</p>
+            </div>
         </div>
     </div>
 </template>
@@ -110,5 +116,11 @@
         width: .2rem;
         height: auto;
         margin-right: .05rem;
+    }
+    .footer{
+        color:#aaa;
+        font-size: 10px;
+        line-height: 1.8;
+        text-align: center;
     }
 </style>

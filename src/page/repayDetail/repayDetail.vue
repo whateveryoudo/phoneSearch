@@ -63,6 +63,8 @@
     import {mapMutations,mapActions,mapGetters} from 'vuex'
     import {getLoginMsg,toLogin} from '@/service/getData'
     import { Indicator} from 'mint-ui'
+    import moment from 'moment'
+
     export default{
         data(){
             return {
@@ -70,7 +72,7 @@
                 bankLogo : require('../../assets/icons/bank-logo.png'),
                 repayInfo : {
                    money : 3000,
-                    date : '2019.08.09'
+                    date : moment().add(1, 'M').date(9).format('YYYY.MM.DD')
                 },
                 loanInfoDetail : {
                     periodNum : 3,
