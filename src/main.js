@@ -9,6 +9,7 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css';
 import './style/scss/common.scss'
 import './style/scss/mint-ui-reset.scss'
+import config from '@/config'
 //注册组件
 
 import { Field, Button, Popup, Cell, Switch } from 'mint-ui';
@@ -19,7 +20,7 @@ Vue.component(Cell.name, Cell);
 Vue.component(Button.name, Button);
 Vue.component(Popup.name, Popup);
 Vue.config.productionTip = false
-
+Vue.prototype.$config = config;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

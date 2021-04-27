@@ -1,4 +1,5 @@
 const userLogin = r => require.ensure([], () => r(require('../page/login/userLogin.vue')), 'userLogin');
+const userRegist = r => require.ensure([], () => r(require('../page/login/userRegist.vue')), 'userRegist');
 const deal = r => require.ensure([], () => r(require('../page/deal/deal.vue')), 'deal');
 const confirmLoan = r => require.ensure([], () => r(require('../page/confirmLoan/confirmLoan.vue')), 'confirmLoan');
 const repayDetail = r => require.ensure([], () => r(require('../page/repayDetail/repayDetail.vue')), 'repayDetail');
@@ -21,7 +22,18 @@ export default
     {
       path: '/login',
       name: 'userLogin',
-      component: userLogin
+      component: userLogin,
+      meta: {
+        title: '用户登录'
+      }
+    },
+    {
+      path: '/regist',
+      name: 'userRegist',
+      component: userRegist,
+      meta: {
+        title: '用户注册登录'
+      }
     },
     {
       path: '/test',

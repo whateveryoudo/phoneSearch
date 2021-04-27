@@ -54,7 +54,7 @@
           </mt-field>
         </section>
       </div>
-      <div class="deal-wrapper">
+       <div class="deal-wrapper">
         <span
           class="checkbox"
           :class="{ selected: userInfo.dealFlag }"
@@ -76,38 +76,33 @@
         text="登录"
         @toNext="submitForm"
       ></next-btn>
-      <div class="bto-wrapper">
-        <router-link to="/regist">
-          <span>新用户注册</span>
-        </router-link>
-      </div>
     </div>
   </div>
 </template>
 <script>
-import headTop from '@/components/header/headTop'
-import nextBtn from '@/components/common/nextBtn'
-import topProgress from '@/components/common/topProgress'
-import { verifyRules } from '@/config/verifyRules'
-import { MessageBox, Toast } from 'mint-ui'
-import { mapMutations, mapActions, mapGetters } from 'vuex'
-import { getLoginMsg, toLogin } from '@/service/getData'
-import { Indicator } from 'mint-ui'
+import headTop from "@/components/header/headTop";
+import nextBtn from "@/components/common/nextBtn";
+import topProgress from "@/components/common/topProgress";
+import { verifyRules } from "@/config/verifyRules";
+import { MessageBox, Toast } from "mint-ui";
+import { mapMutations, mapActions, mapGetters } from "vuex";
+import { getLoginMsg, toLogin } from "@/service/getData";
+import { Indicator } from "mint-ui";
 export default {
-  data () {
+  data() {
     return {
-      logo: require('@/assets/app_logo.png'),
+      logo: require("@/assets/app_logo.png"),
       selectedTab: 0,
       timer: null,
       count: 59,
-      btnText: '发送验证码',
+      btnText: "发送验证码",
       isSendBtnEable: true,
       userInfo: {
-        username: '',
-        password: '',
-        dealFlag: true
-      }
-    }
+        username: "",
+        password: "",
+        dealFlag: true,
+      },
+    };
   },
   computed: {
     validSuc: function () {
@@ -117,59 +112,57 @@ export default {
       ) {
         //手机号正确
         if (this.selectedTab === 0 && this.userInfo.password) {
-          return true
+          return true;
         }
       }
-      return false
-    }
+      return false;
+    },
   },
   components: {
     headTop,
-    nextBtn
+    nextBtn,
   },
-  mounted () {},
-  created () {},
+  mounted() {},
+  created() {},
   methods: {
     //切换登录方式
-    toggleTab (index) {
-      this.selectedTab = index
+    toggleTab(index) {
+      this.selectedTab = index;
     },
     //勾选协议
-    toggleDealStatus () {
-      this.userInfo.dealFlag = !this.userInfo.dealFlag
+    toggleDealStatus() {
+      this.userInfo.dealFlag = !this.userInfo.dealFlag;
     },
-    submitForm () {
-      Indicator.open('登录中...')
+    submitForm() {
+      Indicator.open('登录中...');
       // 校验输入是否正确
       if (verifyRules.phone(this.userInfo.username)) {
         //md5加密账号密码(提交上传)
-        toLogin(this.userInfo)
-          .then(res => {
-            Indicator.close()
-            const { code, data } = res
-            // 将token存入本地
-            sessionStorage.setItem('token', data.token)
-            if (res.code === 200) {
-              Toast('登录成功!')
-              this.$router.push('/confirmLoan')
-            }
-          })
-          .catch(() => {
-            Indicator.close()
-          })
+        toLogin(this.userInfo).then((res) => {
+          Indicator.close();
+          const { code, data } = res;
+          // 将token存入本地
+          sessionStorage.setItem('token', data.token);
+          if (res.code === 200) {
+            Toast('登录成功!');
+            this.$router.push("/confirmLoan");
+          }
+        }).catch(() => {
+          Indicator.close();
+        })
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style lang="scss" scope>
-@import 'src/style/scss/mixin';
+@import "src/style/scss/mixin";
 .logo {
   text-align: center;
-  width: 0.7rem;
-  margin: 0 auto;
+  width:.7rem;
+  margin:0 auto;
   margin-bottom: 0.2rem;
-  img {
+  img{
     width: 100%;
     height: auto;
   }
@@ -188,7 +181,7 @@ export default {
       color: #000;
     }
     &.selected:after {
-      content: ' ';
+      content: " ";
       background-color: $color-primary;
       width: 0.3rem;
       height: 3px;
@@ -218,22 +211,22 @@ export default {
 .deal-wrapper {
   display: flex;
   padding: 0 0.15rem;
-  margin: 0.2rem 0;
+  margin:.2rem 0;
   div:last-child {
     margin-left: 0.05rem;
     line-height: 1.7;
+  }
+  a {
+    color: rgb(2,146,213);
   }
 }
 .divider-block {
   width: 100%;
   height: 0.15rem;
 }
-.bto-wrapper {
-  padding: 0 0.15rem;
+.bto-wrapper{
+  padding:0 0.15rem;
   text-align: right;
-  a {
-    color: #333;
-  }
 }
 
 .getCaptcha.mint-button {

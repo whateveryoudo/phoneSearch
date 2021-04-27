@@ -19,7 +19,9 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     outline: none;
   }
 }
-
+a {
+  color: rgb(2, 146, 213);
+}
 html,body,#app{
   height: 100%;
 }
@@ -79,7 +81,7 @@ html,body,#app{
   display: none;
 }
 .btn-container {
-  margin: 0.3rem auto;
+  margin: 0.2rem auto;
   padding: 0 0.15rem;
   .mint-button{
     height:45px;
@@ -150,11 +152,11 @@ html,body,#app{
 span.checkbox{
   display: inline-block;
   width: .2rem;
-  height: auto;
+  height: .2rem;
   background:url('../../assets/icons/check_box.png') no-repeat;
   background-size: 100% 100%;
   &.selected{
-    background:url('../../assets/icons/check_box_selected.png') no-repeat;
+    background:url('../../assets/icons/checkbox_red.png') no-repeat;
     background-size: 100% 100%;
   }
 
