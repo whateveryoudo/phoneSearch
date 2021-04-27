@@ -3,7 +3,7 @@
  */
 import {getReqid} from '@/service/getData'
 import {SAVEREQID} from './types'
-import {Toast} from 'vuex'
+import {Toast} from 'mint-ui'
 export default {
     updateReqid({commit,state}){
         getReqid().then((res) => {
